@@ -7,9 +7,11 @@ Para la instalación se ejecuta desde la consola de comandos:
 `pip install behave`
 
 ## Implementación
-La implementación se lleva a cabo por medio de la descripción de comportamientos (features) y la secuencia de pasos para llevar a cabo determinado comportamiento dentro del programa.
+La implementación se lleva a cabo por medio de la descripción de comportamientos (features) y la secuencia de pasos (steps) para llevar a cabo determinado comportamiento dentro del programa.
 
 Como ejemplo se realizará la implementación para un juego de naipes (Veintiuna) paso a paso.
 
+### Descripción de comportamientos (features)
 
+### Secuencia de pasos (steps)
 

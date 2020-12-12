@@ -19,22 +19,15 @@ Cada archivo o feature, contiene texto en formato natural que describe un compor
 
 #### Ejemplo
 <pre>
-Feature: Carta del 21
-    Como jugador quiero determinar el valor de una carta para determinar el valor de la mano.
+Feature: barajar al inicio
+    
+    Como repartidor quiero barajar las cartas para iniciar el juego.
 
-Scenario Outline: determinar valor carta
-Given una <carta> para saber su valor
-When el jugador quiere saber su valor
-Then el <valor> de la carta es correcto
-
-Examples:
-    | carta | valor | 
-    | 2, picas  | 2  |
-    | A, corazones  | 1  |
-    | 8, treboles  | 8  |
-    | J, picas  | 10  |
-    | Q, picas  | 10  |
-    | K, picas  | 10  |
+Scenario: barajar
+Given un mazo para jugar 21
+When el repartidor baraja el mazo
+Then las cartas 5 y 10 no son iguales
+And la catidad de cartas es 52
 </pre>   
 
 ### Secuencia de pasos (steps)

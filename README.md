@@ -1,9 +1,10 @@
-# Tutorial Behave
+# Tutorial Behave (VirtualStudioCode)
 
 Behave es un frameworks de pruebas de aceptación basado en el estandar de Gherkin a través del cual se puede definir el comportamiento aplicacionesen lenguaje python utilizando el lenguaje natural.
 
 ## Instalación
-Para la instalación ejecutaremos desde la consola de comandos:
+Para la instalación abriremos Virtual Studio Code e iniciaremos una nueva terminal (Ctrl + Shift + ñ).
+En ella ejecutaremos el comando:
 
 `pip install behave`
 
@@ -44,9 +45,25 @@ También es posible utilizar las palabras reservadas **And** y **But** como paso
 ### Secuencia de pasos (steps)
 Los pasos utilizados en los escenarios se implementan en archivos de python y para almacenarlos se crea una nueva carpeta **steps** dentro de la carpeta features. Behave ejecutara todos los archivos incluidos en esta carpeta. 
 
-Un archivo se relaciona con un archivo de características.
+Un archivo de pasos se relaciona con un archivo de características.
 
+Primero importaremos los archivos necesarios para ejecutar behave y para ejecutar la prueba:
+<pre>
+from behave import *
+from mazo import Mazo
+</pre> 
 
+Luego, por cada paso en el archivo de características (Given,When,Then) crearemos un decorador que será utilizado por behave para relacionar el paso al escenario que corresponde. 
+
+<pre>
+@given('un mazo para jugar 21')
+
+@when('el repartidor baraja el mazo')
+
+@then('las cartas 5 y 10 no son iguales')
+
+@then('la catidad de cartas es 52')
+</pre>
 
 
 

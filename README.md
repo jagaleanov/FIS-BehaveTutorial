@@ -1,9 +1,9 @@
 # Tutorial Behave
 
-Behave es un frameworks de pruebas de aceptación basado en el estandar de Gherkin a través del cual se puede definir el comportamiento aplicaciones en python en texto plano.
+Behave es un frameworks de pruebas de aceptación basado en el estandar de Gherkin a través del cual se puede definir el comportamiento aplicacionesen lenguaje python utilizando el lenguaje natural.
 
 ## Instalación
-Para la instalación se ejecuta desde la consola de comandos:
+Para la instalación ejecutaremos desde la consola de comandos:
 
 `pip install behave`
 
@@ -12,12 +12,12 @@ La implementación se lleva a cabo por medio de la descripción de comportamient
 
 Como ejemplo se realizará la implementación para un juego de naipes (Veintiuna) paso a paso.
 
-### Descripción de comportamientos (features)
-En la carpeta raiz del proyecto es necesario crear una carpeta llamada features en la cual se almacenan los archivos que contienen las descripciones. Un archivo pro cada comportamiento a evaluar. Estos archivos pueden tener cualquier nombre y deben tener la extension .feature.
+### Características de la prueba (features)
+En la carpeta raiz del proyecto crearemos una carpeta llamada features en la cual se almacenan los archivos que contienen las descripciones de cada prueba. Un archivo por cada comportamiento a evaluar en uno o más escenarios. Estos archivos deben tener la extension **.feature**.
 
-Cada archivo o feature, contiene texto en formato natural que describe un comportamiento o parte de él a través de un escenario inicial **(Scenario)** con unas condiciones especificas dadas **(Given)**, un evento desencadenador **(When)** y un resultado esperado **(Then)**. Adicionalmente cada feature tiene un nombre y una breve descripción.
+Cada archivo o feature, contiene texto en formato natural que describe un comportamiento o parte de él por medio de un escenario inicial **(Scenario)** con unas condiciones especificas dadas **(Given)**, un evento desencadenador **(When)** y un resultado esperado **(Then)**. Adicionalmente cada feature tiene un nombre y una descripción.
 
-Las partes Given When y Then conforman los pasos que seran tomados en cuenta para realizar la prueba.
+Las partes Given, When y Then conforman los pasos que seran tomados en cuenta para ejecutar la prueba.
 
 **Scenario**: un nombre que identifica la prueba y su entorno inicial.
 
@@ -37,8 +37,17 @@ Scenario: barajar
 Given un mazo para jugar 21
 When el repartidor baraja el mazo
 Then las cartas 5 y 10 no son iguales
-And la catidad de cartas es 52
-</pre>
+</pre> 
+
+También es posible utilizar las palabras reservadas **And** y **But** como pasos las cuales seran renombradas por behave a su paso predecesor.
 
 ### Secuencia de pasos (steps)
+Los pasos utilizados en los escenarios se implementan en archivos de python y para almacenarlos se crea una nueva carpeta **steps** dentro de la carpeta features. Behave ejecutara todos los archivos incluidos en esta carpeta. 
+
+Un archivo se relaciona con un archivo de características.
+
+
+
+
+
 

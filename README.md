@@ -20,7 +20,9 @@ Cada archivo o feature, contiene texto en formato natural que describe un compor
 Las partes Given When y Then conforman los pasos que seran tomados en cuenta para realizar la prueba.
 
 **Given**: describe el estado inicial del sistema.
+
 **When**: describe un evento que produce un cambio de estado.
+
 **Then**: describe el estado final que se espera del sistema.
 
 #### Ejemplo

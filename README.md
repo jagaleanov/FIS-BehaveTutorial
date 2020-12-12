@@ -18,8 +18,8 @@ En la carpeta raiz del proyecto es necesario crear una carpeta llamada features 
 Cada archivo o feature, contiene texto en formato natural que describe un comportamiento o parte de él a través de un escenario inicial con unas condiciones especificas dadas (Given), un evento desencadenador (When) y una consecuencia esperada (Then). Adicionalmente cada feature tiene un titulo y una breve descripción.
 
 #### Ejemplo
-`Feature: Carta del 21`
-`Como jugador quiero determinar el valor de una carta para determinar el valor de la mano.`
+`Feature: Carta del 21
+Como jugador quiero determinar el valor de una carta para determinar el valor de la mano.`
 `Scenario Outline: determinar valor carta`
 `Given una <carta> para saber su valor`
 `When el jugador quiere saber su valor`

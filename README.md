@@ -1,6 +1,6 @@
 # Tutorial Behave
 
-Behave es un frameworks de pruebas basado en el estandar de Gherkin a través del cual se puede definir el comportamiento aplicaciones en python en texto plano.
+Behave es un frameworks de pruebas de aceptación basado en el estandar de Gherkin a través del cual se puede definir el comportamiento aplicaciones en python en texto plano.
 
 ## Instalación
 Para la instalación se ejecuta desde la consola de comandos:
@@ -18,6 +18,8 @@ En la carpeta raiz del proyecto es necesario crear una carpeta llamada features 
 Cada archivo o feature, contiene texto en formato natural que describe un comportamiento o parte de él a través de un escenario inicial **(Scenario)** con unas condiciones especificas dadas **(Given)**, un evento desencadenador **(When)** y un resultado esperado **(Then)**. Adicionalmente cada feature tiene un nombre y una breve descripción.
 
 Las partes Given When y Then conforman los pasos que seran tomados en cuenta para realizar la prueba.
+
+**Scenario**: un nombre que identifica la prueba y su entorno inicial.
 
 **Given**: describe el estado inicial del sistema.
 

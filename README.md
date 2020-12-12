@@ -20,8 +20,8 @@ Cada archivo o feature, contiene texto en formato natural que describe un compor
 #### Ejemplo
 <pre>
 Feature: Carta del 21
+    Como jugador quiero determinar el valor de una carta para determinar el valor de la mano.
 
-Como jugador quiero determinar el valor de una carta para determinar el valor de la mano.
 Scenario Outline: determinar valor carta
 Given una <carta> para saber su valor
 When el jugador quiere saber su valor

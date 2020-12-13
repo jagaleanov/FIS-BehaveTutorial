@@ -1,4 +1,4 @@
-# Tutorial Behave (VirtualStudioCode)
+# Tutorial Behave (Virtual Studio Code)
 
 Behave es un frameworks de pruebas de aceptación basado en el estandar de Gherkin a través del cual se puede definir el comportamiento aplicacionesen lenguaje python utilizando el lenguaje natural.
 

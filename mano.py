@@ -19,6 +19,6 @@ class Mano:
                 return True
         return False
 
-    def ingresar_carta(self,valor,pinta):
-        self.cartas.append(Carta(valor, pinta))
+    def ingresar_carta(self,carta):
+        self.cartas.append(carta)
         

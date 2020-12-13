@@ -2,11 +2,8 @@ from carta import Carta
 
 class Mano:
 
-    def __init__(self, lista):
-        self.cartas = []
-        for t in lista:
-            valor, pinta = t[1:-1].split(",")
-            self.cartas.append(Carta(valor, pinta))
+    def __init__(self, cartas):
+        self.cartas = cartas
 
     def evaluar(self):
         valor = 0
@@ -22,4 +19,6 @@ class Mano:
                 return True
         return False
 
+    def ingresar_carta(self,valor,pinta):
+        self.cartas.append(Carta(valor, pinta))
         

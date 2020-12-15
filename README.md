@@ -82,7 +82,7 @@ No olvide que las palabras reservadas **And** y **But** se sobreescriben a sus p
 @then('la catidad de cartas es 52')
 </pre>
 
-Ahora, cada uno de estos decoradores va asociado a una funcion que recibe como parametro el contexto y que describira el proceso que se lleva a cabo durante cada paso:
+Ahora, cada uno de estos decoradores va asociado a una funcion de implementación que recibe como parametro un contexto y que se encargara de realizar proceso a llevar a cabo en cada paso:
 
 <pre>
 @given('un mazo para jugar 21')

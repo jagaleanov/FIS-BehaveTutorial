@@ -5,7 +5,9 @@ Feature: mano del 21
 Scenario Outline: valor de la mano
 Given una <mano> para sumar sus cartas
 When el jugador suma la mano
+
 Then el <valor> es correcto
+
 
 Examples:
     | mano | valor |

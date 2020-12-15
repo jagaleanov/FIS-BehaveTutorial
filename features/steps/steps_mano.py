@@ -18,3 +18,4 @@ def step(context):
 @then('el {valor:d} es correcto')
 def step(context, valor):
     assert context.valor == valor
+    

@@ -4,7 +4,7 @@ __Estructura:__
 
 Como __ROL__ quiero __ACCIÓN__ para __FUNCIONALIDAD__
 
-- Como repartidor quiero barajar las cartas para iniciar el juego. (barajar)
+- Como repartidor quiero barajar las cartas para iniciar el juego. (iniciar)
 - Como repartidor quiero entregar 2 cartas para iniciar el juego. (iniciar)
 - Como jugador quiero determinar el valor de una carta para determinar el valor de la mano. (carta)
 - Como jugador quiero determinar el valor de la mano para seguir jugando. (mano)

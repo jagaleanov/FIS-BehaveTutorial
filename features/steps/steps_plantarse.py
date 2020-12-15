@@ -1,14 +1,14 @@
 from behave import *
-from turno import Turno 
+from juego import Juego
 
-@given('el turno de jugador')
+@given('un juego de 21 y el turno de jugador')
 def implementacion(context):
-    context.turno = Turno()
+    context.juego = Juego()
 
 @when('el jugador se planta')
 def implementacion(context):
-    context.turno.plantarse()
+    context.juego.plantarse()
 
 @then('el turno avanza')
 def implementacion(context):
-    assert context.turno.turno_de_jugador == False
+    assert context.juego.turno == 2

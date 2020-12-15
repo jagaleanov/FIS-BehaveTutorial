@@ -29,7 +29,7 @@ La implementación se lleva a cabo por medio de la descripción de comportamient
 
 La idea es desarrollar cada requerimiento uno a la vez por lo cual realizaremos un feature y lo daremos por terminado cuando su funcionamiento este completo y correcto.
 
-### Características de la prueba (features)
+### Características de la prueba (Features)
 En la carpeta raiz del proyecto crearemos una carpeta llamada features en la cual se almacenan los archivos que contienen las descripciones de cada prueba. Un archivo por cada comportamiento a evaluar en uno o más escenarios. Estos archivos deben tener la extension **.feature**.
 
 Cada archivo o feature, contiene texto en formato natural que describe un comportamiento o parte de él por medio de un escenario inicial **(Scenario)** con unas condiciones especificas dadas **(Given)**, un evento desencadenador **(When)** y un resultado esperado **(Then)**. Adicionalmente cada feature tiene un nombre y una descripción.
@@ -59,20 +59,19 @@ Then las cartas 5 y 10 no son iguales
 And la catidad de cartas es 52
 </pre> 
 
-### Secuencia de pasos (steps)
+### Secuencia de pasos (Steps)
 Los pasos utilizados en los escenarios se implementan en archivos de python y para almacenarlos se crea una nueva carpeta **steps** dentro de la carpeta features. Behave ejecutara todos los archivos incluidos en esta carpeta. 
 
 Un archivo de pasos se relaciona con un archivo de características.
 
-Primero importaremos los archivos necesarios para ejecutar behave y para ejecutar la prueba:
+Primero importaremos los archivos necesarios para ejecutar behave:
 <pre>
 from behave import *
-from mazo import Mazo
 </pre> 
 
-Luego, por cada paso en el archivo de características (Given,When,Then,And,But) crearemos un decorador que será utilizado por behave para relacionar el paso al escenario que corresponde. 
+Luego, por cada paso en el archivo de características (Given, When, Then, And, But) crearemos un decorador que será utilizado por behave para relacionar el paso al escenario que corresponde. 
 
-No olvide que las palabras reservadas AND y BUT se sobreescriben a sus pasos anteriores, en esta caso como AND esta siguiente a THEN sera analizado como otra linea de THEN
+No olvide que las palabras reservadas **And** y **But** se sobreescriben a sus pasos anteriores, en esta caso, como **And** esta siguiente a **Then** sera analizado como otra linea de **Then**
 
 <pre>
 @given('un mazo para jugar 21')

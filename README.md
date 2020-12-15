@@ -1,8 +1,8 @@
 # Tutorial Behave (Virtual Studio Code)
 
-Behave es un framework para realizar pruebas de aceptación basado en el estandar de Gherkin a través del cual se puede definir el comportamiento de aplicaciones en lenguaje python utilizando el lenguaje natural.
+Behave es un framework para realizar pruebas de aceptación para Python basado en el estandar de Gherkin que permite definir el comportamiento de aplicaciones en lenguaje de programación utilizando el lenguaje natural.
 
-En este tutorial desarrollaremos un juego de 21 basado en las siguientes historias de usuario:
+En este tutorial desarrollaremos un programa basado en el juego de cartas llamado 21 o Black Jack a partir de las siguientes historias de usuario:
 
 ## Historias de usuario juego 21
 **Estructura:**
@@ -19,22 +19,21 @@ Como **ROL** quiero **ACCIÓN** para **FUNCIONALIDAD**
 
 
 ## Instalación
-Para la instalación abriremos Virtual Studio Code e iniciaremos una nueva terminal (Ctrl + Shift + ñ).
-En ella ejecutaremos el comando:
+Para la instalación de Behave abriremos Virtual Studio Code e iniciaremos una nueva terminal (Ctrl + Shift + ñ)y en ella ejecutaremos el comando:
 
 `pip install behave`
 
-## Implementación
-La implementación se lleva a cabo por medio de la descripción de comportamientos (features) y la secuencia de pasos (steps) para llevar a cabo determinado comportamiento dentro del programa.
+## Para empezar
+La implementación se lleva a cabo por medio de la descripción de comportamientos (features) y la secuencia de pasos (steps) para cumplir con cada historia de usuario.
 
-La idea es desarrollar cada requerimiento uno a la vez por lo cual realizaremos un feature y lo daremos por terminado cuando su funcionamiento este completo y correcto.
+La idea es desarrollar cada historia de usuario una por una, por lo cual realizaremos un feature y lo daremos por terminado cuando sus pasos esten completos y su funcionamiento sea correcto.
 
-### Características de la prueba (Features)
-En la carpeta raiz del proyecto crearemos una carpeta llamada features en la cual se almacenan los archivos que contienen las descripciones de cada prueba. Un archivo por cada comportamiento a evaluar en uno o más escenarios. Estos archivos deben tener la extension **.feature**.
+### Anatomía de los features
+En la carpeta raiz del proyecto crearemos un directorio llamado features en el cual almacenaremos los archivos que contienen una historia de usuario a evaluar en uno o más escenarios y las descripciones de cada prueba. Estos archivos deben tener la extension **.feature**.
 
-Cada archivo o feature, contiene texto en formato natural que describe un comportamiento o parte de él por medio de un escenario inicial **(Scenario)** con unas condiciones especificas dadas **(Given)**, un evento desencadenador **(When)** y un resultado esperado **(Then)**. Adicionalmente cada feature tiene un nombre y una descripción.
+Cada archivo o feature contiene un nombre, una historia de usuario y un texto en formato natural que describe un comportamiento o parte de él por medio de un escenario inicial **(Scenario)** con unas condiciones especificas dadas **(Given)**, un evento desencadenador **(When)** y un resultado esperado **(Then)**.
 
-Las partes Given, When y Then conforman los pasos que seran tomados en cuenta para ejecutar la prueba.
+Las partes Given, When y Then identifican los pasos para ejecutar la prueba.
 
 **Scenario**: un nombre que identifica la prueba y su entorno inicial.
 
@@ -46,6 +45,13 @@ Las partes Given, When y Then conforman los pasos que seran tomados en cuenta pa
 
 También es posible utilizar las palabras reservadas **And** y **But** como pasos las cuales seran renombradas por behave con el nombre del paso anterior.
 
+### Anatomía de los Steps
+Los pasos utilizados en los escenarios se implementan en archivos de Python y para almacenarlos se crea un nuevo directorio **steps** dentro de la carpeta features. Behave ejecutara todos los archivos incluidos en esta carpeta. 
+
+Un archivo de Steps se relaciona con un archivo de Features.
+
+
+### Construcción de un feature
 Para la primera historia crearemos un feature segun el cual, al iniciar el juego, las cartas deben ser barajadas aleatoriamente. Comprobaremos esto comparando 2 cartas del mazo y el número total de cartas.
 
 <pre>
@@ -59,11 +65,10 @@ Then las cartas 5 y 10 no son iguales
 And la catidad de cartas es 52
 </pre> 
 
-### Secuencia de pasos (Steps)
-Los pasos utilizados en los escenarios se implementan en archivos de python y para almacenarlos se crea una nueva carpeta **steps** dentro de la carpeta features. Behave ejecutara todos los archivos incluidos en esta carpeta. 
 
-Un archivo de pasos se relaciona con un archivo de características.
 
+
+### Construcción de los steps para un feature
 Primero importaremos los archivos necesarios para ejecutar behave:
 
 `from behave import *`
@@ -97,5 +102,3 @@ def implementacion(context):
 @then('la catidad de cartas es 52')
 def implementacion(context):
 </pre>
-
-

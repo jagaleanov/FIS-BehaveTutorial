@@ -65,9 +65,8 @@ Los pasos utilizados en los escenarios se implementan en archivos de python y pa
 Un archivo de pasos se relaciona con un archivo de características.
 
 Primero importaremos los archivos necesarios para ejecutar behave:
-<pre>
-from behave import *
-</pre> 
+
+`from behave import *`
 
 Luego, por cada paso en el archivo de características (Given, When, Then, And, But) crearemos un decorador que será utilizado por behave para relacionar el paso al escenario que corresponde. 
 
@@ -83,6 +82,20 @@ No olvide que las palabras reservadas **And** y **But** se sobreescriben a sus p
 @then('la catidad de cartas es 52')
 </pre>
 
+Ahora, cada uno de estos decoradores va asociado a una funcion que recibe como parametro el contexto y que describira el proceso que se lleva a cabo durante cada paso:
 
+<pre>
+@given('un mazo para jugar 21')
+def implementacion(context):
+
+@when('el repartidor baraja el mazo')
+def implementacion(context):
+
+@then('las cartas 5 y 10 no son iguales')
+def implementacion(context):
+
+@then('la catidad de cartas es 52')
+def implementacion(context):
+</pre>
 
 

@@ -195,7 +195,7 @@ En el **Scenario outline** se espera poder pasar parametros de ejecucion especif
 
 En la tabla se puede ver la cantidad de casos de prueva que se ejecutara funcionando como un ciclo forEach para cada caso de prueva se ejecutara el *Step* correspondiente tantas veces como casos de prueva.
 
-El feature debe contener una tabla descrita de manera rapida con la referencia a las variables planteadas en las lineas especificas, en este caso es **Given** y **Then** en donde se especifican las variables a travez de la etiqueta <pre><//jugador></pre> y <pre><repartidor></pre> 
+El feature debe contener una tabla descrita de manera rapida con la referencia a las variables planteadas en las lineas especificas, en este caso es **Given** y **Then** en donde se especifican las variables a travez de las etiquetas  < ganador >, < jugador > y < repartidor > y el valor de estas en cada iteracion en la tabla descrita posteriormente, es importante recordar que en el archivo ***Step*** correspondiente la variables se exportaran de manera particular como *String*.
 
 <pre>
 Feature: ganador
@@ -203,15 +203,56 @@ Feature: ganador
     se debe escoger entre dos manos de cartas la mano ganadora
 
     Scenario Outline: ganador
-        Given 2 manos de <jugador> y <repartidor>
+        Given 2 manos de < jugador > y < repartidor >
         When se evalua las manos
-        Then se obtiene un <ganador>
+        Then se obtiene un < ganador >
 
 
 
-            | jugador                                  | repartidor                                              | ganador    |
-            | (5, treboles);(K, diamantes);(4 , picas) | (K, treboles);(A, diamantes);(A , picas);(k, corazones) | jugador    |
-            | (9, treboles);(J, diamantes);(4 , picas) | (10, diamantes);(A , picas)                             | repartidor |
-            | (K,diamantes);(Q, corazones);(A , picas) | (8, treboles);(K, corazones)                            | jugador    |
-            | (K, treboles);(K, diamantes)             | (10, treboles);(5, picas);(6, diamantes)                | repartidor |
+        | jugador                                  | repartidor                                              | ganador    |
+        | (5, treboles);(K, diamantes);(4 , picas) | (K, treboles);(A, diamantes);(A , picas);(k, corazones) | jugador    |
+        | (9, treboles);(J, diamantes);(4 , picas) | (10, diamantes);(A , picas)                             | repartidor |
+        | (K,diamantes);(Q, corazones);(A , picas) | (8, treboles);(K, corazones)                            | jugador    |
+        | (K, treboles);(K, diamantes)             | (10, treboles);(5, picas);(6, diamantes)                | repartidor |
 </pre>
+
+
+Luego en el ***Step*** pertinente se optendra la pomprobacion pertienente de cada caso.
+
+<pre>
+from behave import *
+from mano import Mano
+
+
+@given("2 manos de {jugador} y {repartidor}")
+def step(context, jugador, repartidor):
+    context.jugadorCar = []
+    context.repartidorCar = []
+    for t in jugador.split(";"):
+        valor, pinta = t[1:-1].split(",")
+        context.jugadorCar.append(Carta(valor, pinta))
+    context.jugador = Mano(context.cartas)
+
+    for t in repartidor.split(";"):
+        valor, pinta = t[1:-1].split(",")
+        context.repartidorCar.append(Carta(valor, pinta))
+    context.repartidor = Mano(context.cartas)
+
+
+@when("se evalua las manos")
+def step(context):
+    context.valorJugador = context.jugador.evaluar()
+    context.valorRepartidor = context.repartidor.evaluar()
+
+
+@then("se obtiene un {ganador}")
+def step(context, ganador):
+    if context.valorJugador > context.valorRepartidor:
+        context.ganador = "jugador"
+    else:
+        context.ganador = "repartidor"
+    assert context.ganador == ganador
+
+</pre>
+
+En algunos casos concretos se debe utilizar logica para guiar el procedimiento en especifico para emular cierta parte de la ejecucion del programa con tal de asegurar que el modulo en especifico funciones de manera correcta.

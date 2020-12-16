@@ -182,17 +182,20 @@ La informacion se corrobora con un **assert** evaluado directamente sobre la eje
 
 En el **Scenario outline** se espera poder pasar parametros de ejecucion especificos de estados tambien especificos en un momento intermedio de la ejecucion, tal como en este caso seria la evaluacion de un ganador de una partida de 21, para esto es imposible generar toda la ejecucion desde el inicio para ejecutar pruevas que presenten granularidad entre ellas sin ningun tipo de interdependencia de las mismas, por lo tanto la informacion debe ser introducida solamente en el proceso de evaluacion sin tener en cuenta el proceso anterior de la ejecucion. Tomaremos como ejemplo el escenario planteado con los siguientes casos de prueva
 
+
+***
 | jugador                                  | repartidor                                              | ganador    |
 | ---------------------------------------- | --------------------------------------------------------|------------|
 | (5, treboles);(K, diamantes);(4 , picas) | (K, treboles);(A, diamantes);(A , picas);(k, corazones) | jugador    |
 | (9, treboles);(J, diamantes);(4 , picas) | (10, diamantes);(A , picas)                             | repartidor |
 | (K,diamantes);(Q, corazones);(A , picas) | (8, treboles);(K, corazones)                            | jugador    |
 | (K, treboles);(K, diamantes)             | (10, treboles);(5, picas);(6, diamantes)                | repartidor |
+***
 
 
 En la tabla se puede ver la cantidad de casos de prueva que se ejecutara funcionando como un ciclo forEach para cada caso de prueva se ejecutara el *Step* correspondiente tantas veces como casos de prueva.
 
-El feature debe contener una tabla descrita de manera rapida con la referencia a las variables planteadas en las lineas especificas, en este caso es **Given** y **Then** en donde se especifican las variables a travez de la etiqueta <jugador> y <repartidor> 
+El feature debe contener una tabla descrita de manera rapida con la referencia a las variables planteadas en las lineas especificas, en este caso es **Given** y **Then** en donde se especifican las variables a travez de la etiqueta <pre><jugador></pre> y <pre><repartidor></pre> 
 
 <pre>
 Feature: ganador

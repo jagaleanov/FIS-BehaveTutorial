@@ -192,7 +192,7 @@ En el **Scenario outline** se espera poder pasar parametros de ejecucion especif
 
 En la tabla se puede ver la cantidad de casos de prueva que se ejecutara funcionando como un ciclo forEach para cada caso de prueva se ejecutara el *Step* correspondiente tantas veces como casos de prueva.
 
-El feature debe contener una tabla 
+El feature debe contener una tabla descrita de manera rapida con la referencia a las variables planteadas en las lineas especificas, en este caso es **Given** y **Then** en donde se especifican las variables a travez de la etiqueta <jugador> y <repartidor> 
 
 <pre>
 Feature: ganador

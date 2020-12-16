@@ -128,3 +128,87 @@ def implementacion(context):
 def implementacion(context):
     assert  len(context.mazo.cartas) == 52
 </pre>
+
+### Traspaso de informacion desde un feature
+
+De igual forma nos podemos encontrar con que debemos evaluar un caso de prueva especifico, y debemos transportar informacion desde el <strong> feature </strong>  en este caso existen dos opciones, un **scenario** y un **scenario outline**, en el primero de estos analizar funciones que no deban tener un constructor con recibimiento de parametros, y en el segundo, se dan multiples casos de prueva. 
+
+####  Scenario
+
+En este caso se optienen los datos de forma directa en la escritura del scenario y se espera la comprobacion de forma directa desde los propios metodos de respuesta y retorno logicos en el momento.
+
+
+<b>Feature</b>
+<pre>
+Feature: iniciar juego
+    
+    Como repartidor quiero entregar 2 cartas a cada jugador para iniciar el juego.
+
+Scenario: iniciar juego
+Given el inicio de un juego de 21
+Then la mano del jugador se inicia con 2 cartas
+And la mano del repartidor se inicia con 2 cartas
+And es el turno del jugador
+</pre>
+
+La informacion se espera optener directamente desde la ejecucion añadiendose al contexto.
+
+<b>Steps</b>
+<pre> 
+from behave import *
+from juego import Juego
+
+@given('el inicio de un juego de 21')
+def implementacion(context):
+    context.juego = Juego()
+
+@then('la mano del jugador se inicia con 2 cartas')
+def implementacion(context):
+    assert len(context.juego.mano_jugador.cartas) == 2
+
+@then('la mano del repartidor se inicia con 2 cartas')
+def implementacion(context):
+    assert len(context.juego.mano_repartidor.cartas) == 2
+
+@then('es el turno del jugador')
+def implementacion(context):
+    assert context.juego.turno == 1
+</pre>
+
+La informacion se corrobora con un **assert** evaluado directamente sobre la ejecucion igualado a condiciones particulares tales como un numero o un string
+
+
+#### Scenario outline
+
+En el **Scenario outline** se espera poder pasar parametros de ejecucion especificos de estados tambien especificos en un momento intermedio de la ejecucion, tal como en este caso seria la evaluacion de un ganador de una partida de 21, para esto es imposible generar toda la ejecucion desde el inicio para ejecutar pruevas que presenten granularidad entre ellas sin ningun tipo de interdependencia de las mismas, por lo tanto la informacion debe ser introducida solamente en el proceso de evaluacion sin tener en cuenta el proceso anterior de la ejecucion. Tomaremos como ejemplo el escenario planteado con los siguientes casos de prueva
+
+| jugador                                  | repartidor                                              | ganador    |
+| ---------------------------------------- | --------------------------------------------------------|------------|
+| (5, treboles);(K, diamantes);(4 , picas) | (K, treboles);(A, diamantes);(A , picas);(k, corazones) | jugador    |
+| (9, treboles);(J, diamantes);(4 , picas) | (10, diamantes);(A , picas)                             | repartidor |
+| (K,diamantes);(Q, corazones);(A , picas) | (8, treboles);(K, corazones)                            | jugador    |
+| (K, treboles);(K, diamantes)             | (10, treboles);(5, picas);(6, diamantes)                | repartidor |
+
+
+En la tabla se puede ver la cantidad de casos de prueva que se ejecutara funcionando como un ciclo forEach para cada caso de prueva se ejecutara el *Step* correspondiente tantas veces como casos de prueva.
+
+El feature debe contener una tabla 
+
+<pre>
+Feature: ganador
+
+    se debe escoger entre dos manos de cartas la mano ganadora
+
+    Scenario Outline: ganador
+        Given 2 manos de <jugador> y <repartidor>
+        When se evalua las manos
+        Then se obtiene un <ganador>
+
+
+
+            | jugador                                  | repartidor                                              | ganador    |
+            | (5, treboles);(K, diamantes);(4 , picas) | (K, treboles);(A, diamantes);(A , picas);(k, corazones) | jugador    |
+            | (9, treboles);(J, diamantes);(4 , picas) | (10, diamantes);(A , picas)                             | repartidor |
+            | (K,diamantes);(Q, corazones);(A , picas) | (8, treboles);(K, corazones)                            | jugador    |
+            | (K, treboles);(K, diamantes)             | (10, treboles);(5, picas);(6, diamantes)                | repartidor |
+</pre>

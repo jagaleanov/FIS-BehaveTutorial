@@ -217,7 +217,7 @@ Feature: ganador
 </pre>
 
 
-Luego en el ***Step*** pertinente se optendra la pomprobacion pertienente de cada caso.
+Luego en el ***Step*** pertinente se obtendra la pomprobacion pertienente de cada caso.
 
 <pre>
 from behave import *

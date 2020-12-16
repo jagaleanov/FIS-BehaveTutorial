@@ -102,3 +102,29 @@ def implementacion(context):
 @then('la catidad de cartas es 52')
 def implementacion(context):
 </pre>
+
+Consecuentemente con lo anterior se debe realizar una comprobacion con la palabra reservada **assert** y la variable de **context** servira como una extencion de la prueva n el momento de ejecucion creando un banco de informacion mutable en el momento de trabajo
+
+<strong> implementacion de <i>context</i> para el manejo de informacion  </strong>
+<pre>
+@given('un mazo para jugar 21')
+def implementacion(context):
+    context.mazo = Mazo()
+
+@when('el repartidor baraja el mazo')
+def implementacion(context):
+    context.mazo.barajar()
+</pre>
+
+
+<strong> comprobacion de la informacion añadida al contexto de la iteracion presente  </strong>
+<pre>
+
+@then('las cartas 5 y 10 no son iguales')
+def implementacion(context):
+    assert not context.mazo.dar_carta(5).son_iguales(context.mazo.dar_carta(10))
+
+@then('la catidad de cartas es 52')
+def implementacion(context):
+    assert  len(context.mazo.cartas) == 52
+</pre>

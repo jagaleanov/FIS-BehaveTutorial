@@ -105,7 +105,7 @@ def implementacion(context):
 
 Consecuentemente con lo anterior se debe realizar una comprobacion con la palabra reservada **assert** y la variable de **context** servira como una extencion de la prueva n el momento de ejecucion creando un banco de informacion mutable en el momento de trabajo
 
-**implementacion de <i>context</i> para el manejo de informacion**
+**Implementacion de *context* para el manejo de informacion**
 <pre>
 @given('un mazo para jugar 21')
 def implementacion(context):

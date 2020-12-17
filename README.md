@@ -1,5 +1,9 @@
 # Tutorial Behave (Virtual Studio Code)
 
+Jorge Galeano
+
+Juan Moreno
+
 Behave es un framework para realizar pruebas de aceptación para Python basado en el estandar de Gherkin que permite definir el comportamiento de aplicaciones en lenguaje de programación utilizando el lenguaje natural.
 
 En este tutorial desarrollaremos un programa basado en el juego de cartas llamado 21 o Black Jack a partir de las siguientes historias de usuario:
